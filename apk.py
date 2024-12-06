@@ -26,7 +26,7 @@ from nltk.stem import PorterStemmer
 
 
 st.set_page_config(
-    page_title="Analisis Sentimen Rumah Makan",
+    page_title="Analisis Sentimen Pembangunan Ibukota Nusantara",
     page_icon="https://raw.githubusercontent.com/dinia28/skripsi/main/rumah.jpg",
     layout="centered",
     initial_sidebar_state="expanded",
@@ -38,7 +38,7 @@ st.set_page_config(
 )
 
 st.write(
-    """<h1 style="font-size: 40px;">Analisis Sentimen Rumah Makan</h1>""",
+    """<h1 style="font-size: 40px;">Analisis Sentimen Pembangunan Ibukota Nusantara</h1>""",
     unsafe_allow_html=True,
 )
 
