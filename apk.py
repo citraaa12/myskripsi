@@ -27,7 +27,7 @@ from nltk.stem import PorterStemmer
 
 st.set_page_config(
     page_title="Analisis Sentimen Pembangunan Ibukota Nusantara",
-    page_icon="https://raw.githubusercontent.com/dinia28/skripsi/main/rumah.jpg",
+    page_icon="https://raw.githubusercontent.com/citraaa12/myskripsi/main/ikn.jpg",
     layout="centered",
     initial_sidebar_state="expanded",
     menu_items={
