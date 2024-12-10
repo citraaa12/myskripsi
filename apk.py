@@ -84,7 +84,7 @@ with st.container():
     if selected == "Home":
         st.write(
             """<h3 style = "text-align: center;">
-        <img src="https://raw.githubusercontent.com/dinia28/skripsi/main/bebek.jpeg" width="500" height="300">
+        <img src="https://raw.githubusercontent.com/citraaa12/myskripsi/main/ikn.png" width="500" height="300">
         </h3>""",
             unsafe_allow_html=True,
         )
