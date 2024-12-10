@@ -53,9 +53,9 @@ with st.container():
                 "Home",
                 "Data",
                 "Preprocessing",
-                "TF-IDF",
-                "Information Gain",
-                "Model WKNN",
+                "Word2Vec",
+                "Hasil Klasifikasi",
+                "Implementasi",
 
             ],
             icons=[
