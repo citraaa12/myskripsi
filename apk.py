@@ -148,22 +148,22 @@ with st.container():
                 return text
         
         # Mengambil data dari file Excel
-        df = pd.read_excel("https://raw.githubusercontent.com/dinia28/skripsi/main/bebek.xlsx")
+        df = pd.read_csv("https://raw.githubusercontent.com/dinia28/skripsi/main/dataset.csv")
         # Cek kolom dan isi untuk memastikan kolom 'Ulasan' ada
-        st.write("Data contoh sebelum cleaning:", df['Ulasan'].head())
+        st.write("Data contoh sebelum cleaning :", df['komentar'].head())
         
         # Mengisi nilai NaN dengan string kosong untuk kolom 'Ulasan'
-        df['Ulasan'] = df['Ulasan'].fillna("")
+        df['komentar'] = df['komentar'].fillna("")
         
         # Menerapkan fungsi cleaning
-        df['Cleaning'] = df['Ulasan'].apply(cleaning)
-        st.write("Hasil Cleansing:")
-        st.dataframe(df[['Ulasan', 'Cleaning']])
+        df['Cleaning'] = df['komentar'].apply(cleaning)
+        st.write("Hasil Cleaning :")
+        st.dataframe(df[['komentar', 'Cleaning']])
         
         # Menambahkan proses case folding
         df['CaseFolding'] = df['Cleaning'].str.lower()
-        st.write("Hasil Case Folding:")
-        st.dataframe(df[['Ulasan', 'Cleaning', 'CaseFolding']])
+        st.write("Hasil Case Folding :")
+        st.dataframe(df[['komentar', 'Cleaning', 'CaseFolding']])
         
         # Membaca file slang words
         slangword_normalisasi = pd.read_csv("combined_slang_words.csv")
