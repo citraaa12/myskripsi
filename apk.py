@@ -179,9 +179,9 @@ if selected == "Data":
     st.write("Proses cleaning selesai!")
         
         # Menambahkan proses case folding
-        df['CaseFolding'] = df['Cleaning'].str.lower()
-        st.write("Hasil Case Folding :")
-        st.dataframe(df[['komentar', 'Cleaning', 'CaseFolding']])
+    df['CaseFolding'] = df['Cleaning'].str.lower()
+    st.write("Hasil Case Folding :")
+    st.dataframe(df[['komentar', 'Cleaning', 'CaseFolding']])
         
         # Membaca file slang words
         slangword_normalisasi = pd.read_csv("combined_slang_words.csv")
