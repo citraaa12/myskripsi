@@ -106,10 +106,6 @@ with st.container():
         )
         
         st.subheader("Dataset")
-        # Menggunakan file Excel dari GitHub
-        import pandas as pd
-import streamlit as st
-
 # Membaca file CSV dari URL
 df = pd.read_csv(
     "https://raw.githubusercontent.com/citraaa12/myskripsi/main/dataset.csv"
@@ -118,7 +114,7 @@ st.dataframe(df, width=600)
 
 st.subheader("Label")
 # Menampilkan frekuensi dari masing-masing label
-label_counts = df['Label'].value_counts()
+label_counts = df['label'].value_counts()
 st.write(label_counts)
         
     elif selected == "Preprocessing":
