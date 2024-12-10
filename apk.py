@@ -106,16 +106,16 @@ with st.container():
         )
         
         st.subheader("Dataset")
-# Membaca file CSV dari URL
-df = pd.read_csv(
-    "https://raw.githubusercontent.com/citraaa12/myskripsi/main/dataset.csv"
-)
-st.dataframe(df, width=600)
-
-st.subheader("Label")
-# Menampilkan frekuensi dari masing-masing label
-label_counts = df['label'].value_counts()
-st.write(label_counts)
+        # Membaca file CSV dari URL
+        df = pd.read_csv(
+            "https://raw.githubusercontent.com/citraaa12/myskripsi/main/dataset.csv"
+        )
+        st.dataframe(df, width=600)
+        
+        st.subheader("Label")
+        # Menampilkan frekuensi dari masing-masing label
+        label_counts = df['label'].value_counts()
+        st.write(label_counts)
         
     elif selected == "Preprocessing":
         # Cleansing
