@@ -178,16 +178,16 @@ if selected == "Data":
 
     st.write("Proses cleaning selesai!")
         
-        # Menambahkan proses case folding
+    # Menambahkan proses case folding
     df['CaseFolding'] = df['Cleaning'].str.lower()
     st.write("Hasil Case Folding :")
     st.dataframe(df[['komentar', 'Cleaning', 'CaseFolding']])
         
-        # Membaca file slang words
-        slangword_normalisasi = pd.read_csv("combined_slang_words.csv")
+    # Membaca file slang words
+    slangword_normalisasi = pd.read_csv("combined_slang_words.csv")
         
-        # Membuat kamus slang words untuk normalisasi
-        kata_normalisasi_dict = {row[0]: row[1] for _, row in slangword_normalisasi.iterrows()}
+    # Membuat kamus slang words untuk normalisasi
+    kata_normalisasi_dict = {row[0]: row[1] for _, row in slangword_normalisasi.iterrows()}
         
         # Fungsi untuk normalisasi kata slang
         def normalisasi_kata(document):
