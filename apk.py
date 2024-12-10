@@ -121,44 +121,62 @@ with st.container():
         # Cleansing
         st.subheader("Preprocessing")
     
-        import re
         import pandas as pd
-        
-        # Mendefinisikan fungsi cleaning
-        def cleaning(text):
-            try:
-                text = re.sub(r'\$\w*', '', str(text))
-                text = re.sub(r'^rt[\s]+', '', str(text))
-                text = re.sub(r'((www\.[^\s]+)|(https?://[^\s]+))', ' ', str(text))
-                text = re.sub(r'&quot;', " ", str(text))
-                text = re.sub(r"\d+", " ", str(text))
-                text = re.sub(r"\b[a-zA-Z]\b", "", str(text))
-                text = re.sub(r"[^\w\s]", " ", str(text))
-                text = re.sub(r'(.)\1+', r'\1\1', str(text))
-                text = re.sub(r"\s+", " ", str(text))
-                text = re.sub(r'#', '', str(text))
-                text = re.sub(r'[^a-zA-Z0-9]', ' ', str(text))
-                text = re.sub(r'\s\s+', ' ', str(text))
-                text = re.sub(r'^RT[\s]+', '', str(text))
-                text = re.sub(r'^b[\s]+', '', str(text))
-                text = re.sub(r'^link[\s]+', '', str(text))
-                return text
-            except Exception as e:
-                st.write(f"Error cleaning text : {e}")
-                return text
-        
-        # Mengambil data dari file Excel
-        df = "https://raw.githubusercontent.com/citraaa12/myskripsi/main/dataset.csv"
-        # Cek kolom dan isi untuk memastikan kolom 'Ulasan' ada
-        st.write("Data contoh sebelum cleaning :", df['komentar'].head())
-        
-        # Mengisi nilai NaN dengan string kosong untuk kolom 'Ulasan'
-        df['komentar'] = df['komentar'].fillna("")
-        
-        # Menerapkan fungsi cleaning
-        df['Cleaning'] = df['komentar'].apply(cleaning)
-        st.write("Hasil Cleaning :")
-        st.dataframe(df[['komentar', 'Cleaning']])
+import streamlit as st
+import string
+import re
+
+# Fungsi untuk membersihkan teks
+def clean_text(text):
+    # Mengubah teks menjadi huruf kecil
+    text = text.lower()
+    # Menghapus tanda baca
+    text = text.translate(str.maketrans("", "", string.punctuation))
+    # Menghapus angka
+    text = re.sub(r'\d+', '', text)
+    # Menghapus spasi berlebih
+    text = re.sub(r'\s+', ' ', text).strip()
+    return text
+
+# Streamlit app
+if selected == "Data":
+
+    st.subheader("""Deskripsi Data""")
+    st.write(
+        """
+        Data yang digunakan dalam aplikasi ini yaitu data dari hasil crawling komentar pada video youtube
+        """
+    )
+    
+    st.subheader("Dataset")
+    # Membaca file CSV dari URL
+    df = pd.read_csv(
+        "https://raw.githubusercontent.com/citraaa12/myskripsi/main/dataset.csv"
+    )
+    st.dataframe(df, width=600)
+    
+    st.subheader("Label")
+    # Menampilkan frekuensi dari masing-masing label
+    label_counts = df['label'].value_counts()
+    st.write(label_counts)
+    
+    st.subheader("Data Cleaning")
+    st.write("Proses cleaning data meliputi penghapusan nilai kosong, tanda baca, angka, dan spasi berlebih.")
+    
+    # Menangani nilai kosong
+    df.dropna(inplace=True)
+    st.write("Data setelah menghapus nilai kosong:")
+    st.dataframe(df, width=600)
+    
+    # Cleaning kolom teks (ganti 'komentar' dengan nama kolom teks Anda)
+    if 'komentar' in df.columns:
+        df['cleaned_komentar'] = df['komentar'].apply(clean_text)
+        st.write("Data setelah membersihkan teks:")
+        st.dataframe(df[['komentar', 'cleaned_komentar']], width=600)
+    else:
+        st.error("Kolom 'komentar' tidak ditemukan dalam dataset. Pastikan nama kolom sesuai.")
+
+    st.write("Proses cleaning selesai!")
         
         # Menambahkan proses case folding
         df['CaseFolding'] = df['Cleaning'].str.lower()
