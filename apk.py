@@ -190,7 +190,7 @@ if selected == "Data":
     kata_normalisasi_dict = {row[0]: row[1] for _, row in slangword_normalisasi.iterrows()}
         
         # Fungsi untuk normalisasi kata slang
-        def normalisasi_kata(document):
+    def normalisasi_kata(document):
             return ' '.join([kata_normalisasi_dict.get(term, term) for term in document.split()])
         
         # Menerapkan fungsi normalisasi slang words
@@ -202,7 +202,7 @@ if selected == "Data":
         st.dataframe(df[['Ulasan', 'Cleaning', 'CaseFolding', 'slangword']])
 
         # Tokenizing
-        def tokenizer(text):
+    def tokenizer(text):
             if isinstance(text, str):
                 return text.split()  # Tokenisasi sederhana dengan split
                 return []
@@ -221,7 +221,7 @@ if selected == "Data":
         corpus = sw
         
         # Fungsi stopword removal
-        def stopword_removal(words):
+    def stopword_removal(words):
             return [word for word in words if word not in corpus]
         
         # Menerapkan stopword removal pada kolom 'Tokenizing'
@@ -235,7 +235,7 @@ if selected == "Data":
         stemmer = PorterStemmer()
         
         # Fungsi stemming
-        def stemText(words):
+    def stemText(words):
             return [stemmer.stem(word) for word in words]
         
         # Menerapkan stemming pada kolom 'Stopword_Removal'
@@ -248,7 +248,7 @@ if selected == "Data":
         st.write("Data setelah Stemming:")
         st.dataframe(df[['Ulasan', 'Cleaning', 'CaseFolding', 'slangword', 'Tokenizing', 'Stopword_Removal', 'Stemming', 'Full_Text_Stemmed']])
 
-    elif selected == "TF-IDF":
+elif selected == "TF-IDF":
         # Load the dataset from 'hasil_preprocessing.xlsx'
         df = pd.read_excel("hasil_preprocessing.xlsx")
         # Assume 'Full_Text_Stemmed' is the column with the processed text for TF-IDF
@@ -271,7 +271,7 @@ if selected == "Data":
         # import joblib
         # joblib.dump(vectorizer, 'tfidf_vectorizer.pkl')
     
-    elif selected == "Information Gain":
+elif selected == "Information Gain":
         import requests
         from io import BytesIO
         st.subheader("Information Gain")
