@@ -107,15 +107,19 @@ with st.container():
         
         st.subheader("Dataset")
         # Menggunakan file Excel dari GitHub
-        df = pd.read_excel(
-            "https://raw.githubusercontent.com/citraaa12/myskripsi/main/dataset.csv.excel"
-        )
-        st.dataframe(df, width=600)
-        
-        st.subheader("Label")
-        # Menampilkan frekuensi dari masing-masing label
-        label_counts = df['Label'].value_counts()
-        st.write(label_counts)
+        import pandas as pd
+import streamlit as st
+
+# Membaca file CSV dari URL
+df = pd.read_csv(
+    "https://raw.githubusercontent.com/citraaa12/myskripsi/main/dataset.csv"
+)
+st.dataframe(df, width=600)
+
+st.subheader("Label")
+# Menampilkan frekuensi dari masing-masing label
+label_counts = df['Label'].value_counts()
+st.write(label_counts)
         
     elif selected == "Preprocessing":
         # Cleansing
