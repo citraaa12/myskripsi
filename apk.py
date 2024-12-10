@@ -92,7 +92,7 @@ with st.container():
         st.subheader("""Deskripsi Aplikasi""")
         st.write(
             """
-        ANALISIS SENTIMEN RUMAH MAKAN MELALUI ULASAN GOOGLE MAPS MENGGUNAKAN METODE WEIGHT K-NEAREST NEIGHBOR DENGAN SELEKSI FITUR INFORMATION GAIN
+        ANALISIS SENTIMEN PEMBANGUNAN IBUKOTA NUSANTARA MENGGUNAKAN METODE LONG SHORT TERM-MEMORY (LSTM) DAN WORD2VEC
         """
         )
 
@@ -101,14 +101,14 @@ with st.container():
         st.subheader("""Deskripsi Data""")
         st.write(
             """
-        Data yang digunakan dalam aplikasi ini yaitu data dari hasil scrapping ulasan pada google maps
+        Data yang digunakan dalam aplikasi ini yaitu data dari hasil crawling komentar pada video youtube
         """
         )
         
         st.subheader("Dataset")
         # Menggunakan file Excel dari GitHub
         df = pd.read_excel(
-            "https://raw.githubusercontent.com/dinia28/skripsi/main/bebek.xlsx"
+            "https://raw.githubusercontent.com/citraaa12/myskripsi/main/data komentar youtube (1).csv"
         )
         st.dataframe(df, width=600)
         
