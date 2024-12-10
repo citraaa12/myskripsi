@@ -144,11 +144,11 @@ with st.container():
                 text = re.sub(r'^link[\s]+', '', str(text))
                 return text
             except Exception as e:
-                st.write(f"Error cleaning text: {e}")
+                st.write(f"Error cleaning text : {e}")
                 return text
         
         # Mengambil data dari file Excel
-        df = pd.read_csv("https://raw.githubusercontent.com/dinia28/skripsi/main/dataset.csv")
+        df = "https://raw.githubusercontent.com/citraaa12/myskripsi/main/dataset.csv"
         # Cek kolom dan isi untuk memastikan kolom 'Ulasan' ada
         st.write("Data contoh sebelum cleaning :", df['komentar'].head())
         
