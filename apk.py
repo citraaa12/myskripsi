@@ -107,7 +107,7 @@ with st.container():
         
         st.subheader("Dataset")
         # Menggunakan file Excel dari GitHub
-        df = pd.read_excel(
+        df = pd.read_csv(
             "https://raw.githubusercontent.com/citraaa12/myskripsi/main/data komentar youtube (1).csv"
         )
         st.dataframe(df, width=600)
